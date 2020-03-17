@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+body{
+	margin: 0 auto;
+	background-image: url("flower.png");
+	background-size: cover;
+	font-size: 20px;
+    font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+}
+
+.float{
+	width: 48px;
+	height: 48px;
+	float: left;
+	border-radius: 15px;	
+}
+
+h1, a{
+	margin-left: 20px;
+}
+
+a{
+	text-decoration: none;
+	background-color: #bbbbbb;
+	padding: 5px 10px;
+	border-radius: 10px;
+	color: #ffffff;
+}
+
+.container{
+	margin-top: 20px;
+}

@@ -6,24 +6,20 @@
 <head>
 <meta charset="utf-8">
 <title>Cookie</title>
-<style type="text/css">
-label{
-	display: block;
-	float: left;
-	width: 50px;
-}
-</style>
+<link rel="stylesheet" href="cookieStyle.css">
 </head>
 <body>
-	<h1>${title}</h1>
-	
-	<form action="CookieServlet" method="post">
-		<label>ID:</label>
-		<input type="text" name="id" value="${idValue}">
-		<br>
-		<label>Pass:</label>
-		<input type="password" name="pass" value="">
-		<input type="submit" name="button" value="submit">
-	</form>
+
+	<div>
+		<h1>${title}</h1>
+		<form action="CookieServlet" method="post">
+			<label>ID:</label>
+			<input type="text" name="id" value="${valueId}" placeholder="IDを入力してね">
+			<br>
+			<label>Pass:</label>
+			<input type="password" name="pass" value="${valuePass}" placeholder="パスワードを入力してね">
+			<input class="submit" type="submit" name="button" value="submit">
+		</form>
+	</div>
 </body>
 </html>

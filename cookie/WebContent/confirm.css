@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+body{
+	margin: 0 auto;
+	background-image: url("fortune.jpg");
+	background-size:cover;
+	font-size: 20px;
+    font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+}
+
+div{
+	margin-left: 10%;
+	color: #ffffff;
+}
+
+a{
+	text-decoration: none;
+	padding-right: 250px;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(255, 255, 255) 50%);
+	background-position: 0 0;
+	background-size: 200% auto;
+	transition: .3s;
+}
+
+a:hover{
+  background-position: -100% 0;
+  color: #fff;
+}
+
+a:link { color: #ffffff; }
+a:visited { color: #c0c0c0; }
+a:hover { color: #000000; }
+a:active { color: #ff8000; }
+

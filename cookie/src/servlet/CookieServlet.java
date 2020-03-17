@@ -2,8 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.net.URLDecoder;
-import java.net.URLEncoder;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,6 +10,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import cookieService.CookieFac;
 
 /**
  * Servlet implementation class CookieServlet
@@ -25,19 +25,27 @@ public class CookieServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Cookie[] cookies = request.getCookies();
-		String value ="ここにIDを入力してね";
+		String valueId = "";
+		String valuePass = "";
 		String message ="IDを入力するとクッキーが発行されます";
+		
 		if(cookies != null) {
 			for(Cookie c: cookies) {
-				if(c.getName().equals("id")) {
-					String cookie = URLDecoder.decode(c.getValue(), "UTF-8");
-					value = cookie;
-					message = "おかえりなさい<br>IDはこちらで入力しておきました";
+				switch(c.getName()) {
+				case ("id"):
+					String id = URLDecoder.decode(c.getValue(), "UTF-8");
+					valueId = id;
+					request.setAttribute("valueId", valueId);
+					message = "おかえりなさい<br>" + valueId + "さん";
+					break;
+				case ("pass"):
+					String pass = URLDecoder.decode(c.getValue(), "UTF-8");
+					valuePass = pass;
+					request.setAttribute("valuePass", valuePass);
+					break;
 				}
 			}
 		}
-		
-		request.setAttribute("idValue", value);
 		request.setAttribute("title", message);
 		
 		ServletContext context = getServletContext();
@@ -51,22 +59,19 @@ public class CookieServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
+		String pass = request.getParameter("pass");
 		
-		if(id != null && !id.isEmpty()) {
-			String eId = URLEncoder.encode(id, "UTF-8");
-			Cookie cookie = new Cookie("id", eId);
-			cookie.setMaxAge(60);
-			response.addCookie(cookie);
+		Cookie idCookie = CookieFac.getCookie(id , "id");
+		Cookie passCookie = CookieFac.getCookie(pass, "pass");
+		
+		if(idCookie != null && passCookie != null) {
+			response.addCookie(idCookie);
+			response.addCookie(passCookie);
 			request.setAttribute("message", "クッキーを発行しました<br>TOPに戻ってみてね");
 		}else {
-			request.setAttribute("message", "やり直してください");
+			request.setAttribute("message", "入力が不正です<br>やり直してください");
 		}
 		
-		
-		/*
-		 * パスワードもクッキーとして保存してみる？
-		 * その場合クッキー発行をmodel化してもいいかもしれない
-		 */
 		response.setContentType("text/html; charset=UTF-8");
 		ServletContext context = getServletContext();
 		RequestDispatcher dis = context.getRequestDispatcher("/confirm.jsp");

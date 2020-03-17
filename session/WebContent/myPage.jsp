@@ -6,35 +6,26 @@
 <head>
 <meta charset="utf-8">
 <title>myPage</title>
-<style type="text/css">
-label{
-	display: block;
-	float: left;
-	width: 200px;
-}
-
-input{
-	margin-bottom: 20px;
-}
-</style>
+<link rel="stylesheet" href="./style/mypage.css">
 </head>
 <body>
-	<h2>${bean.name}さんのマイページ</h2>
-	<form action="SessionServlet" method="post">
-		<label>プロフィールを作成する: </label>
-		<input type="submit" name="button" value="profile">
-		<br>
-		<label>ログアウトする: </label>
-		<input type="submit" name="button" value="logout">
-	</form>
-	
-	<c:if test="${bean.age != null}">
-		<p>年齢...${bean.age}代</p>
-	</c:if>
-	
-	<c:if test="${bean.gender != null}">
-		<p>性別...${bean.gender == "man" ? "男":"女"}</p>
-	</c:if>
-	
+	<div>
+		<h2><strong>${bean.name}</strong>さんのマイページ</h2>
+		<form action="SessionServlet" method="post">
+			<label>プロフィールを作成する: </label>
+			<input type="submit" name="button" value="profile">
+			<br>
+			<label>ログアウトする: </label>
+			<input type="submit" name="button" value="logout">
+		</form>
+		
+		<c:if test="${bean.age != null}">
+			<p>年齢...<strong>${bean.age}代</strong></p>
+		</c:if>
+		
+		<c:if test="${bean.gender != null}">
+			<p>性別...<strong>${bean.gender == "man" ? "男":"女"}</strong></p>
+		</c:if>
+	</div>
 </body>
 </html>

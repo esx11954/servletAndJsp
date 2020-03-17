@@ -2,6 +2,7 @@ package servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -24,7 +25,7 @@ public class ParamServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		
+
 		// リダイレクト処理でhtmlに飛ばす
 		String url = "http://localhost:8080/parameter/param.html";
 		String referer = request.getHeader("Referer");
@@ -33,8 +34,14 @@ public class ParamServlet extends HttpServlet {
 		}else {
 			String text = request.getParameter("text");
 			
-			request.setAttribute("text", text);
+			if(!text.isEmpty()) {
+				request.setAttribute("text", text);
+			}else {
+				request.setAttribute("text", "空文字です");
+			}
+			
 			request.setAttribute("flag", flag);
+			request.setAttribute("cssFile", "get");
 			
 			dispatch(request, response, "/param.jsp");
 		}	
@@ -51,19 +58,29 @@ public class ParamServlet extends HttpServlet {
 		
 		try {
 			text = Integer.parseInt(request.getParameter("text"));
+			if(text < 1) throw new NumberFormatException(); 
 			request.setAttribute("text", text + "回繰り返します");
 		}catch(NumberFormatException e) {
 			dispatch(request, response, "/param.html");
 			return;
 		}
 		
+		Random random = new Random();
+		String[] colorArray = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f"};
+
+		
 		ArrayList<String> list = new ArrayList<>();
 		for(int i = 1; i <= text; i++) {
-			list.add("繰り返し " + i + " 回目");
+			String colorCode = "#";
+			for(int j = 0; j < 6; j++) {
+				colorCode += colorArray[random.nextInt(16)];	
+			}
+			list.add(colorCode);
 		}
 		
 		request.setAttribute("list", list);
 		request.setAttribute("flag", flag);
+		request.setAttribute("cssFile", "post");
 		
 		dispatch(request, response, "/param.jsp");
 	}

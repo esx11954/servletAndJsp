@@ -6,9 +6,12 @@
 <head>
 <meta charset="utf-8">
 <title>Confirmation</title>
+<link rel="stylesheet" href="confirm.css">
 </head>
 <body>
-	<h2>${message}</h2>
-	<a href="CookieServlet">Topへ</a>
+	<div>
+		<h2>${message}</h2>
+		<a href="CookieServlet">Topへ</a>
+	</div>
 </body>
 </html>

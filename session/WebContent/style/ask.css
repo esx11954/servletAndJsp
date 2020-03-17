@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+body{
+	margin: 0 auto;
+	background-image: url("../img/ask.jpg");
+	background-size: cover;
+	font-size: 20px;
+    font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+}
+
+div{
+	margin-left: 30px;
+}
+
+input{
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #00ff00;
+	border: solid 2px #00ff00;
+	border-radius: 3px;
+	margin-bottom: 10px;
+}
+
+input:hover {
+  background: #00ff00;
+  color: white;
+}
+
+select::-ms-expand {
+	display: none;
+}
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin-bottom: 20px;
+	padding: 7px 30px 7px 10px;
+	font-size: 93%;
+	line-height: 1.1em;
+	border-radius: 5px;
+	border: none;
+	background-image: url(./images/icon_arrow.svg);
+	background-repeat: no-repeat;
+	background-size: 12px 10px;
+	background-position: right 10px center;
+	background-color: #bddfff;
+}

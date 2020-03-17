@@ -6,15 +6,18 @@
 <head>
 <meta charset="utf-8">
 <title>質問２</title>
+<link rel="stylesheet" href="./style/ask.css">
 </head>
 <body>
-	<p>あなたの性別は？</p>
-	<form action="SessionServlet" method="post">
-		<input type="radio" name="gender" value="man" checked> 男性
-		<input type="radio" name="gender" value="woman"> 女性
-		<input type="hidden" name="askNo" value="2">
-		<input type="submit" name="button" value="next">
-		<br>
-	</form>
+	<div>
+		<p>あなたの性別は？</p>
+		<form action="SessionServlet" method="post">
+			<label><input type="radio" name="gender" value="man" checked> 男性</label>
+			<label><input type="radio" name="gender" value="woman"> 女性</label>
+			<input type="hidden" name="askNo" value="2">
+			<input type="submit" name="button" value="next">
+			<br>
+		</form>
+	</div>
 </body>
 </html>

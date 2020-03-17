@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+body{
+	background-image: url("parrot.jpg");
+	background-size: cover;
+	font-size: 20px;
+    font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+}
+
+h1{
+	color: #ffffff;
+}
+
+a{
+	text-decoration: none;
+	background-color: #bbbbbb;
+	padding: 5px 10px;
+	border-radius: 10px;
+	color: #ffffff;
+}

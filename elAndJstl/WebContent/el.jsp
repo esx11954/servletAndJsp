@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>el expression</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<h1>${head}</h1>
@@ -16,8 +17,10 @@
 		<input type="submit" value="Go to ${requestScope.method}">
 	</form>
 	
-	<p>${pageContext}</p>
-	<p>${cookie}</p>
-	<p>${header}</p>
+	<div>
+		<p>${pageContext}</p>
+		<p>${cookie}</p>
+		<p>${header}</p>
+	</div>
 </body>
 </html>
