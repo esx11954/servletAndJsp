@@ -6,56 +6,12 @@
 <head>
 <meta charset="utf-8">
 <title>Edit Item</title>
-<style type="text/css">
-table{
-	border-collapse: collapse;
-	border: solid 2px orange;
-}
-
-table th, table td {
-  border: solid 1px red;
-}
-
-th{
-	background-color: #fa8072;
-	color: #ffffff;
-}
-
-td{
-	padding-top: 10px;
-	padding-bottom: 10px;
-	text-align: center;
-}
-
-.col1{
-	width: 10%;
-}
-
-.col2{
-	width: 6%;
-}
-
-.col3{
-	width: 6%;
-}
-
-.col4{
-	width: 70%;
-}
-
-.edit,textarea{
-	width: 95%;
-}
-
-.btn{
-	border-radius:3px;
-	
-}
-</style>
+<link rel="stylesheet" href="bean.css">
 </head>
 <body>
-	<h2>編集してください</h2>
-	<form action="BeansServlet" method="post">
+	<div class="title"><h2>${editOrAdd}してください</h2></div>
+	
+	<form action="${servlet}" method="post">
 	<table>
 		<tr>
 			<th class="col1">料理名</th>
@@ -73,5 +29,11 @@ td{
 		</tr>
 	</table>
 	</form>
+	<c:if test ="${editOrAdd == '編集'}">
+		<form class="delForm" action="DeleteMenuServlet" method="get">
+			<input class="deletebtn" type="submit" value="削除する">
+			<input type="hidden" name="index" value="${index}">
+		</form>
+	</c:if>
 </body>
 </html>

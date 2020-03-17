@@ -1,0 +1,110 @@
+@charset "UTF-8";
+
+body{
+	margin: 0 auto;
+	background-image: url("menu.jpg");
+	background-attachment: fixed;
+	font-size: 20px;
+    font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+}
+
+.title{
+	text-align: center;
+	color: #fffacd;
+	background-color: rgba(0,0,0,0.3);
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.float{
+	float: right;
+	margin-right: 20px;
+}
+
+table{
+  width: 100%;
+  border-spacing: 0;
+  background-color: rgba(255,255,255,0.2);
+  margin-bottom: 50px;
+}
+
+table th{
+  border-bottom: solid 2px #fb5144;
+  padding: 10px 0;
+  color: #dc143c;
+}
+
+table td{
+  border-bottom: solid 2px #ddd;
+  padding: 10px 0;
+}
+
+.center{
+	text-align: center;
+}
+
+.col1, .col2, .col3{
+	width: 10%;
+}
+
+.col4{
+	width: 60%;
+}
+
+p{
+	color: red;
+	text-align: center;
+}
+
+
+.edit,textarea{
+	width: 90%;
+	border-radius: 6px;
+	margin-left: 6px;
+	background-color: #ddd;
+}
+
+textarea{
+	margin-left: 15px;
+}
+
+input{
+
+}
+
+.btn{
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #ffa500;
+	border: solid 2px #ffa500;
+	border-radius: 3px;
+	transition: .2s;
+	margin-bottom: 10px;
+}
+
+.btn:hover {
+  background: #ffa500;
+  color: white;
+}
+
+.delForm{
+	text-align: center;
+}
+
+.deletebtn{
+	display: inline-block;
+	padding: 0.7em 3em;
+	text-decoration: none;
+	color: #ff0000;
+	border: solid 2px #ff0000;
+	border-radius: 3px;
+	transition: .2s;
+	margin-top: 10px;
+}
+
+.deletebtn:hover{
+	background: #ff0000;
+	color: white;
+}

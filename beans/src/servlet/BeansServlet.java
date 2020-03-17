@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import bean.FoodBean;
-import logic.CreateMenu;
+import initialize.CreateMenu;
 
 /**
  * Servlet implementation class BeansServlet
@@ -28,8 +28,19 @@ public class BeansServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession(true);
-		session.setAttribute("menuList", CreateMenu.createMenuList());
+
+		// セッションにメニューが登録されていなければ新規作成(初期メニュー)
+		if(session.getAttribute("menuList") == null) {
+			session.setAttribute("menuList", CreateMenu.createMenuList());
+		}
 		
+		// メニュー追加時に例外が発生したらメッセージのスコープを移し替える
+		if(session.getAttribute("message") != null) {
+			String message = (String) session.getAttribute("message");
+			session.removeAttribute("message");
+			request.setAttribute("message", message);
+		}
+
 		response.setContentType("text/html; charset=UTF-8");
 		ServletContext context = getServletContext();
 		RequestDispatcher dis = context.getRequestDispatcher("/beansTop.jsp");
@@ -44,18 +55,21 @@ public class BeansServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		HttpSession session = request.getSession(false);
 		int index;
-		
 		String btn = request.getParameter("btn");
+		
+		HttpSession session = request.getSession(false);
+		ArrayList<FoodBean> menuList = (ArrayList<FoodBean>) session.getAttribute("menuList");
 		
 		try {
 			// 変更ボタンが押された場合
 			if(btn.equals("変更")) {
 				index = Integer.parseInt(request.getParameter("index"));
 				session.setAttribute("index", index);
-				ArrayList<FoodBean> bean = (ArrayList<FoodBean>) session.getAttribute("menuList");
-				request.setAttribute("editItem", bean.get(index));
+				
+				request.setAttribute("editItem", menuList.get(index));
+				request.setAttribute("servlet", "BeansServlet");
+				request.setAttribute("editOrAdd", "編集");
 				
 				ServletContext context = getServletContext();
 				RequestDispatcher dis = context.getRequestDispatcher("/edit.jsp");
@@ -64,10 +78,13 @@ public class BeansServlet extends HttpServlet {
 			// 確定ボタンが押された場合
 			}else if(btn.equals("確定")) {
 				index = (int) session.getAttribute("index");
-				CreateMenu.names[index] = request.getParameter("foodName");
-				CreateMenu.prices[index] = Integer.parseInt(request.getParameter("price"));
-				CreateMenu.kcals[index] = Integer.parseInt(request.getParameter("kcal"));
-				CreateMenu.descriptions[index] = request.getParameter("description");
+				FoodBean bean = menuList.get(index);
+				bean.setFoodName(request.getParameter("foodName"));
+				bean.setPrice(Integer.parseInt(request.getParameter("price")));
+				bean.setKcal(Integer.parseInt(request.getParameter("kcal")));
+				bean.setDescription(request.getParameter("description"));
+				menuList.set(index, bean);
+				session.setAttribute("menuList", menuList);
 				doGet(request, response);
 			}
 		}catch(Exception e) {

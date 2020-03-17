@@ -6,58 +6,18 @@
 <head>
 <meta charset="utf-8">
 <title>beans top</title>
-<style>
-table{
-	border-collapse: collapse;
-	border: solid 2px orange;
-}
-
-table th, table td {
-  border: solid 1px red;
-}
-
-th{
-	background-color: #fa8072;
-	color: #ffffff;
-}
-
-td{
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-.center{
-	text-align: center;
-}
-
-.col1{
-	width: 10%;
-}
-
-.col2{
-	width: 6%;
-}
-
-.col3{
-	width: 6%;
-}
-
-.col4{
-	width: 70%;
-}
-
-.btn{
-	border-radius:3px;
-}
-
-p{
-	color: red;
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="bean.css">
 </head>
 <body>
-	<h1>メニュー一覧</h1>
+	<div class="title"><h2>MENU</h2></div>
+	
+	<form action="AddMenuServlet" method="get">
+		<input class="btn float" type="submit" name="btn" value="メニューを追加する">
+	</form>
+	<form action="DeleteMenuServlet" method="post">
+		<input class="btn float" type="submit" name="btn" value="メニューを初期化する">
+	</form>
+	
 	<c:if test ="${message != null}">
 		<p>${message}</p>
 	</c:if>
