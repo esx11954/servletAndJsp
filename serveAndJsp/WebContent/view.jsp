@@ -5,6 +5,7 @@
 <head>
 <meta charset="utf-8">
 <title>jspページ</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<h1>${doWhich}を動かしました</h1>
