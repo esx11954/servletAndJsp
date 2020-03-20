@@ -28,8 +28,8 @@ public class SessionServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession(false);
 		if(session != null) session.invalidate();
-		// System.out.println("get " + session.getId());
 		
+		// ログイン失敗時、ログアウト時、不正操作時以外の場合
 		if(request.getAttribute("message") == null) request.setAttribute("message", "名前とパスワードを入力してください");
 				
 		response.setContentType("text/html; charset=UTF-8");
@@ -47,66 +47,69 @@ public class SessionServlet extends HttpServlet {
 		String fileName = "top";
 		String button = request.getParameter("button");
 		
+		try {
+			HttpSession session = request.getSession(false);
+			ProfileBean pBean = null;
+			if(session != null) pBean = (ProfileBean) session.getAttribute("bean");
 		
-		System.out.println(button);
-		
-		HttpSession session = request.getSession(false);
-		ProfileBean pBean = (ProfileBean) session.getAttribute("bean");
-		
-		System.out.println("post" + session.getId());
-		
-		// ログインボタンが押された場合
-		if(button.equals("login")) {
-			
-			// ログイン成功時の処理
-			if(request.getParameter("pass").equals("reglecasse")) {
-				HttpSession newSession = request.getSession(true);
-				pBean = new ProfileBean();
-				pBean.setName(request.getParameter("name"));
-				newSession.setAttribute("bean", pBean);
-				fileName = "myPage";
+			// ログインボタンが押された場合
+			if(button.equals("login")) {
 				
-			// ログイン失敗時の処理
+				// ログイン成功時の処理
+				if(request.getParameter("pass").equals("reglecasse")) {
+					HttpSession newSession = request.getSession(true);
+					pBean = new ProfileBean();
+					pBean.setName(request.getParameter("name"));
+					newSession.setAttribute("bean", pBean);
+					fileName = "myPage";
+					
+				// ログイン失敗時の処理
+				}else {
+					request.setAttribute("message", "ログインに失敗しました");
+					doGet(request, response);
+					return;
+				}
+				
+			// profileボタンが押された場合
+			}else if(button.equals("profile") && pBean != null) {
+				fileName = "ask1";
+				
+			// logoutボタンが押された場合
+			}else if(button.equals("logout") && pBean != null) {
+				request.setAttribute("message", "ログアウトしました");
+				doGet(request, response);
+				return;
+				
+			// nextボタンが押された場合
+			}else if(button.equals("next") && pBean != null) {
+				String askNo = request.getParameter("askNo");
+
+				// ask1.jspから飛んできた場合
+				if(askNo.equals("1")) {
+					pBean.setAge(request.getParameter("age"));
+					session.setAttribute("bean", pBean);
+					fileName = "ask2";
+					
+				// ask2.jspから飛んできた場合
+				}else if(askNo.equals("2")) {
+					pBean.setGender(request.getParameter("gender"));
+					session.setAttribute("bean", pBean);
+					System.out.println(request.getParameter("gender"));
+					fileName = "myPage";
+				}
+				
+			// 不正な操作が行われた場合
 			}else {
-				request.setAttribute("message", "ログインに失敗しました");
+				request.setAttribute("message", "セッションが不正です");
 				doGet(request, response);
 				return;
 			}
-			
-		// profileボタンが押された場合
-		}else if(button.equals("profile") && pBean != null) {
-			fileName = "ask1";
-			
-		// logoutボタンが押された場合
-		}else if(button.equals("logout") && pBean != null) {
-			request.setAttribute("message", "ログアウトしました");
-			doGet(request, response);
-			return;
-			
-		// nextボタンが押された場合
-		}else if(button.equals("next") && pBean != null) {
-			String askNo = request.getParameter("askNo");
-
-			// ask1.jspから飛んできた場合
-			if(askNo.equals("1")) {
-				pBean.setAge(request.getParameter("age"));
-				session.setAttribute("bean", pBean);
-				fileName = "ask2";
-				
-			// ask2.jspから飛んできた場合
-			}else if(askNo.equals("2")) {
-				pBean.setGender(request.getParameter("gender"));
-				session.setAttribute("bean", pBean);
-				System.out.println(request.getParameter("gender"));
-				fileName = "myPage";
-			}
-			
-		// 不正な操作が行われた場合
-		}else {
+		}catch(Exception e) {
 			request.setAttribute("message", "セッションが不正です");
 			doGet(request, response);
 			return;
 		}
+		
 		
 		response.setContentType("text/html; charset=UTF-8");
 		ServletContext context = getServletContext();

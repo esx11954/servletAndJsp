@@ -18,8 +18,8 @@ import servise.Select;
 /**
  * Servlet implementation class webServlet
  */
-@WebServlet("/webServlet")
-public class webServlet extends HttpServlet {
+@WebServlet("/DBServlet")
+public class DBServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	private DBAccess dbAccess;
@@ -28,12 +28,11 @@ public class webServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		System.out.println("servlet test haha?...1");
 		
+		// 全データ抽出処理
 		dbAccess = new Select();
 		try {
-			dbAccess.excute(request);
+			dbAccess.execute(request);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -53,7 +52,7 @@ public class webServlet extends HttpServlet {
 		try {
 			
 			// DB挿入処理 
-			if(btn.equals("submit")) {
+			if(btn.equals("POST")) {
 				String input = request.getParameter("text");
 				// 100文字以上ならdoGet
 				if(input.length() >= 100 || input.equals("") || input == null) {
@@ -62,24 +61,19 @@ public class webServlet extends HttpServlet {
 					return;
 				}
 				dbAccess = new Insert();
-				dbAccess.excute(request);
+				dbAccess.execute(request);
 			
 			// DB削除処理
 			}else {
 				dbAccess = new Delete();
-				dbAccess.excute(request);
+				dbAccess.execute(request);
 			}
 
 			// 全データ抽出処理
-			dbAccess = new Select();
-			dbAccess.excute(request);
+			doGet(request, response);
 		}catch(Exception e) {
 			System.out.println("Exception occured...");
 			System.out.println(e);
 		}
-
-		ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/jspTest.jsp");
-		dis.forward(request, response);
 	}
 }

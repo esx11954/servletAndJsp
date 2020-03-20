@@ -11,7 +11,7 @@ import dto.MessageDto;
 public class Select implements DBAccess {
 	
 	@Override
-	public void excute(HttpServletRequest request) throws SQLException {
+	public void execute(HttpServletRequest request) throws SQLException {
 		
 		Dao dao = null;
 		try {

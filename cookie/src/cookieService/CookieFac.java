@@ -10,7 +10,7 @@ public class CookieFac {
 	public static Cookie getCookie(String param, String idOrPass) throws UnsupportedEncodingException {
 		
 		Cookie cookie = null;
-		System.out.println("param..." + param);
+		
 		if(param != null && !param.isEmpty()) {
 			String encoded = URLEncoder.encode(param, "UTF-8");
 			cookie = new Cookie(idOrPass, encoded);

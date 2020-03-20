@@ -37,8 +37,8 @@ public class BeansServlet extends HttpServlet {
 		// メニュー追加時に例外が発生したらメッセージのスコープを移し替える
 		if(session.getAttribute("message") != null) {
 			String message = (String) session.getAttribute("message");
-			session.removeAttribute("message");
 			request.setAttribute("message", message);
+			session.removeAttribute("message");
 		}
 
 		response.setContentType("text/html; charset=UTF-8");

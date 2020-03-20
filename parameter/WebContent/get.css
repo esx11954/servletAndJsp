@@ -5,10 +5,13 @@ body{
 	background-size: cover;
 	font-size: 20px;
     font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+    text-align: center;
 }
 
 h1{
-	color: #ffffff;
+	color: #0f0f0f;
+	font-size: 100px;
+	margin-top: 250px;
 }
 
 a{

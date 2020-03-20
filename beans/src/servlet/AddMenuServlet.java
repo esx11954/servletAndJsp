@@ -64,6 +64,8 @@ public class AddMenuServlet extends HttpServlet {
 				foodBean.setDescription(description);
 				menuList.add(foodBean);
 				session.setAttribute("menuList", menuList);
+			}else {
+				throw new Exception();
 			}
 		}catch(Exception e) {
 			session.setAttribute("message", "エラーが発生しました");
@@ -71,6 +73,5 @@ public class AddMenuServlet extends HttpServlet {
 		}finally {
 			response.sendRedirect("http://localhost:8080/beans/BeansServlet");
 		}
-		
 	}
 }

@@ -64,13 +64,15 @@ public class CookieServlet extends HttpServlet {
 		Cookie idCookie = CookieFac.getCookie(id , "id");
 		Cookie passCookie = CookieFac.getCookie(pass, "pass");
 		
+		String message = "入力が不正です<br>やり直してください";
+		
 		if(idCookie != null && passCookie != null) {
 			response.addCookie(idCookie);
 			response.addCookie(passCookie);
-			request.setAttribute("message", "クッキーを発行しました<br>TOPに戻ってみてね");
-		}else {
-			request.setAttribute("message", "入力が不正です<br>やり直してください");
+			message = "クッキーを発行しました<br>TOPに戻ってみてね";
 		}
+		
+		request.setAttribute("message", message);
 		
 		response.setContentType("text/html; charset=UTF-8");
 		ServletContext context = getServletContext();

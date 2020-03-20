@@ -9,7 +9,7 @@ import dao.Dao;
 public class Delete implements DBAccess {
 
 	@Override
-	public void excute(HttpServletRequest request) throws SQLException {
+	public void execute(HttpServletRequest request) throws SQLException {
 
 		Dao dao = null;
 		String index = request.getParameter("index");

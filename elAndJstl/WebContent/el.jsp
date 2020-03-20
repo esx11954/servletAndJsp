@@ -11,7 +11,7 @@
 	<h1>${head}</h1>
 	<p>${3 + 3}</p>
 	<p>${3 == 3}</p>
-	<p>method: ${method == "get" ? "get" : "post"}</p>
+	<p>method: ${method == "get" ? "post" : "get"}</p>
 	
 	<form action="ElJstlServlet" method="${method}">
 		<input type="submit" value="Go to ${requestScope.method}">
