@@ -24,6 +24,8 @@ public class CookieServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// クライアントからクッキーを配列で取得
 		Cookie[] cookies = request.getCookies();
 		String valueId = "";
 		String valuePass = "";
@@ -31,16 +33,22 @@ public class CookieServlet extends HttpServlet {
 		
 		if(cookies != null) {
 			for(Cookie c: cookies) {
+				
+				// クッキー名が
 				switch(c.getName()) {
+				
+				// "id"だった場合
 				case ("id"):
-					String id = URLDecoder.decode(c.getValue(), "UTF-8");
-					valueId = id;
+					// クッキーをデコード(読み取れる形式に変換)
+					valueId = URLDecoder.decode(c.getValue(), "UTF-8");
 					request.setAttribute("valueId", valueId);
 					message = "おかえりなさい<br>" + valueId + "さん";
 					break;
+				
+				// "pass"だった場合
 				case ("pass"):
-					String pass = URLDecoder.decode(c.getValue(), "UTF-8");
-					valuePass = pass;
+					// クッキーをデコード(読み取れる形式に変換)
+					valuePass = URLDecoder.decode(c.getValue(), "UTF-8");
 					request.setAttribute("valuePass", valuePass);
 					break;
 				}
@@ -58,15 +66,19 @@ public class CookieServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
+		
+		// パラメータの受け取り
 		String id = request.getParameter("id");
 		String pass = request.getParameter("pass");
 		
+		// クッキー生成処理
 		Cookie idCookie = CookieFac.getCookie(id , "id");
 		Cookie passCookie = CookieFac.getCookie(pass, "pass");
 		
 		String message = "入力が不正です<br>やり直してください";
 		
 		if(idCookie != null && passCookie != null) {
+			// クライアントへのクッキー発行処理
 			response.addCookie(idCookie);
 			response.addCookie(passCookie);
 			message = "クッキーを発行しました<br>TOPに戻ってみてね";

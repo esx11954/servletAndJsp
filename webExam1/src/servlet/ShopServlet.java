@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import item.Item;
 
 /**
- * Servlet implementation class ShopServlet
+ * staticフィールドにArrayListを持ち、起動中はそのリストを使い回す<br>
+ * staticブロックの中ではArrayListに全ツアーを追加する<br>
+ * staticブロックは初期化ブロックとも呼ばれ、インスタンス生成時(サーブレット起動時)に実行される
  */
 @WebServlet("/ShopServlet")
 public class ShopServlet extends HttpServlet {
@@ -31,7 +33,8 @@ public class ShopServlet extends HttpServlet {
 	} 
 	
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * Get通信時(起動時)に動作
+	 * リクエストスコープにフィールドのArrayListをセットし、shopForm.jspに遷移する
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -43,7 +46,8 @@ public class ShopServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * Post通信時に動作(パラメータを受取る)
+	 * パラメータをもとにページ遷移、計算などを行う
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");

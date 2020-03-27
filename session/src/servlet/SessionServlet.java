@@ -14,19 +14,22 @@ import javax.servlet.http.HttpSession;
 import beans.ProfileBean;
 
 /**
- * Servlet implementation class SessionServlet
+ * Session学習用サーブレット
  */
 @WebServlet("/SessionServlet")
 public class SessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * セッションを破棄し、ログインページに遷移する(ログアウト処理時、ログイン失敗時、不正操作時など)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
+		// セッションの取得(なければnullが返ってくる)
 		HttpSession session = request.getSession(false);
+		
+		// セッションの破棄
 		if(session != null) session.invalidate();
 		
 		// ログイン失敗時、ログアウト時、不正操作時以外の場合
@@ -39,7 +42,7 @@ public class SessionServlet extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * 受取るパラメータをもとにページ遷移を行う
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
@@ -48,8 +51,11 @@ public class SessionServlet extends HttpServlet {
 		String button = request.getParameter("button");
 		
 		try {
+			// セッションの取得
 			HttpSession session = request.getSession(false);
 			ProfileBean pBean = null;
+			
+			// セッションに格納されているオブジェクトを取得
 			if(session != null) pBean = (ProfileBean) session.getAttribute("bean");
 		
 			// ログインボタンが押された場合
@@ -57,9 +63,13 @@ public class SessionServlet extends HttpServlet {
 				
 				// ログイン成功時の処理
 				if(request.getParameter("pass").equals("reglecasse")) {
+					
+					// 新規セッションの取得
 					HttpSession newSession = request.getSession(true);
 					pBean = new ProfileBean();
 					pBean.setName(request.getParameter("name"));
+					
+					// セッションにオブジェクトを格納
 					newSession.setAttribute("bean", pBean);
 					fileName = "myPage";
 					

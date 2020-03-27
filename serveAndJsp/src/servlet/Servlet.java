@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Servlet
+ * ServletとJSP学習用サーブレット
  */
 @WebServlet("/Servlet")
 public class Servlet extends HttpServlet {
@@ -22,6 +22,8 @@ public class Servlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 現在時刻、文字列"doGet"を画面に渡す
 		request.setAttribute("date", new Date());
 		request.setAttribute("doWhich", "doGet");
 		
@@ -34,6 +36,8 @@ public class Servlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 現在時刻、文字列"doPost"を画面に渡す
 		request.setAttribute("date", new Date());
 		request.setAttribute("doWhich", "doPost");
 		

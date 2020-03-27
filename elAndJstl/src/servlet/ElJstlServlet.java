@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ElJstlServlet
+ * EL式学習用サーブレット
  */
 @WebServlet("/ElJstlServlet")
 public class ElJstlServlet extends HttpServlet {
@@ -21,6 +21,8 @@ public class ElJstlServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 文字列"el expression"と"post"を画面に渡す
 		request.setAttribute("head", "el expression");
 		request.setAttribute("method", "post");
 		
@@ -33,6 +35,8 @@ public class ElJstlServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		// 文字列"EL EXPRESSION"と"get"を画面に渡す
 		request.setAttribute("head", "EL EXPRESSION");
 		request.setAttribute("method", "get");
 		

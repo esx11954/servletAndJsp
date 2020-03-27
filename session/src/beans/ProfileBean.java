@@ -2,6 +2,15 @@ package beans;
 
 import java.io.Serializable;
 
+/**
+ * プロフィール情報をまとめて保持するためのクラス<br>
+ * 以下のフィールドと、ゲッターセッターを持つ<br>
+ * ・名前<br>
+ * ・年齢<br>
+ * ・性別<br>
+ * @author user
+ *
+ */
 @SuppressWarnings("serial")
 public class ProfileBean implements Serializable {
 

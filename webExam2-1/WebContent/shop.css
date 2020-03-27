@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+* {
+  margin:0; padding:0;
+}
+header {
+  width: 100%;
+  margin: 0 auto;
+  color: white;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  z-index:1001;
+}
+
+header .headline{
+  font-size: 32px;
+  padding: 10px;
+  background-color: #000000;
+}
+
+.nav-list {
+  padding: 20px 0;
+}
+
+.nav-list-item {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+}
+
+.h-container{
+	display: flex;
+}
+
+.header-link{
+	text-decoration: none;
+	color: #0e0e0e;
+}
