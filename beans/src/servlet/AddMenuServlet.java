@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import bean.FoodBean;
 
 /**
- * Servlet implementation class AddMenuServlet
+ * Bean追加用サーブレット
  */
 @WebServlet("/AddMenuServlet")
 public class AddMenuServlet extends HttpServlet {

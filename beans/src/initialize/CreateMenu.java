@@ -4,9 +4,18 @@ import java.util.ArrayList;
 
 import bean.FoodBean;
 
+/**
+ * メニュー初期化のためのクラス<br>
+ * createMenuListメソッドのみpublicなクラスメソッド
+ * @author user
+ *
+ */
 public class CreateMenu {
 
-	public static String[] names = {
+	/**
+	 * メニュー名を持つ配列
+	 */
+	private static String[] names = {
 		"ラーメン",
 		"チャーハン",
 		"餃子(6個)",
@@ -16,7 +25,10 @@ public class CreateMenu {
 		"パエリア"
 	};
 	
-	public static int[] prices = {
+	/**
+	 * 値段を持つ配列
+	 */
+	private static int[] prices = {
 		700,
 		400,
 		280,
@@ -26,7 +38,10 @@ public class CreateMenu {
 		640
 	};
 	
-	public static int[] kcals = {
+	/**
+	 * カロリーを持つ配列
+	 */
+	private static int[] kcals = {
 		436,
 		163,
 		196,
@@ -36,7 +51,10 @@ public class CreateMenu {
 		129
 	};
 	
-	public static String[] descriptions = {
+	/**
+	 * 説明を持つ配列
+	 */
+	private static String[] descriptions = {
 		"中華麺とスープを主とし、様々な具（チャーシュー、メンマ、味付け玉子、刻み葱、海苔など）を組み合わせた麺料理",
 		"炊きあがった米飯を様々な具材と共に油で炒めた料理",
 		"小麦粉を原料とした皮で、肉、エビ、野菜などで作った餡を包み、茹でる、焼く、蒸す、揚げるなど調理した食べ物",
@@ -46,6 +64,13 @@ public class CreateMenu {
 		"米（ジャバニカ米）どころとして知られるスペイン東部バレンシア地方発祥の、ジャバニカ米と野菜、魚介類、肉などの食材と共にそのスープを米に炊き込む料理"
 	};
 	
+	/**
+	 * メニューリストを生成するメソッド<br>
+	 * beanオブジェクトにそれぞれのフィールドを代入し、<br>
+	 * 配列の要素番号ごとに商品がオブジェクトとして生成される
+	 * 
+	 * @return　beanオブジェクトを要素としてもつArrayList
+	 */
 	public static ArrayList<FoodBean> createMenuList(){
 		ArrayList<FoodBean> menuList = new ArrayList<>();
 		FoodBean bean;

@@ -16,7 +16,7 @@ import bean.FoodBean;
 import initialize.CreateMenu;
 
 /**
- * Servlet implementation class BeansServlet
+ * Bean学習用サーブレット
  */
 @WebServlet("/BeansServlet")
 public class BeansServlet extends HttpServlet {

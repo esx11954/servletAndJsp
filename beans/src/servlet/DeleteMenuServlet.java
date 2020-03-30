@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import bean.FoodBean;
 
 /**
- * Servlet implementation class DeleteMenuServlet
+ * Bean削除、初期化用サーブレット
  */
 @WebServlet("/DeleteMenuServlet")
 public class DeleteMenuServlet extends HttpServlet {
