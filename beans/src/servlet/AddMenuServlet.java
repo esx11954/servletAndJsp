@@ -49,24 +49,22 @@ public class AddMenuServlet extends HttpServlet {
 		try {
 			// 追加アイテムのパラメータを受取る
 			String name = request.getParameter("foodName");
-			int price = Integer.parseInt(request.getParameter("price"));
-			int kcal = Integer.parseInt(request.getParameter("kcal"));
-			String description = request.getParameter("description");
+			String price = request.getParameter("price");
+			String kcal = request.getParameter("kcal");
+			String desc = request.getParameter("description");
+			
+			// 入力が不正なら例外発生
+			if(name.isEmpty() || price.isEmpty() || kcal.isEmpty() || desc.isEmpty()) throw new Exception();
 			
 			// 正しく入力されていればsessionのmenuListに追加
-			if(!name.isEmpty() && price > 0 && kcal > 0 && !description.isEmpty()) {
-				
-				ArrayList<FoodBean> menuList = (ArrayList<FoodBean>) session.getAttribute("menuList");
-				FoodBean foodBean = new FoodBean();
-				foodBean.setFoodName(name);
-				foodBean.setPrice(price);
-				foodBean.setKcal(kcal);
-				foodBean.setDescription(description);
-				menuList.add(foodBean);
-				session.setAttribute("menuList", menuList);
-			}else {
-				throw new Exception();
-			}
+			ArrayList<FoodBean> menuList = (ArrayList<FoodBean>) session.getAttribute("menuList");
+			FoodBean foodBean = new FoodBean();
+			foodBean.setFoodName(name);
+			foodBean.setPrice(Integer.parseInt(price));
+			foodBean.setKcal(Integer.parseInt(kcal));
+			foodBean.setDescription(desc);
+			menuList.add(foodBean);
+			session.setAttribute("menuList", menuList);
 		}catch(Exception e) {
 			session.setAttribute("message", "エラーが発生しました");
 			System.out.println(e.getMessage());

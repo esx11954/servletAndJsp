@@ -77,12 +77,21 @@ public class BeansServlet extends HttpServlet {
 				
 			// 確定ボタンが押された場合
 			}else if(btn.equals("確定")) {
+				String name = request.getParameter("foodName");
+				String price = request.getParameter("price");
+				String kcal = request.getParameter("kcal");
+				String desc = request.getParameter("description");
+				
+				// 入力が不正なら例外発生
+				if(name.isEmpty() || price.isEmpty() || kcal.isEmpty() || desc.isEmpty()) throw new Exception();
+				
+				// 正しく入力されていればsessionのmenuList内の該当商品を更新
 				index = (int) session.getAttribute("index");
 				FoodBean bean = menuList.get(index);
-				bean.setFoodName(request.getParameter("foodName"));
-				bean.setPrice(Integer.parseInt(request.getParameter("price")));
-				bean.setKcal(Integer.parseInt(request.getParameter("kcal")));
-				bean.setDescription(request.getParameter("description"));
+				bean.setFoodName(name);
+				bean.setPrice(Integer.parseInt(price));
+				bean.setKcal(Integer.parseInt(kcal));
+				bean.setDescription(desc);
 				menuList.set(index, bean);
 				session.setAttribute("menuList", menuList);
 				doGet(request, response);
