@@ -29,20 +29,9 @@
 			<th class="col4">説明</th>
 			<th class="col5"></th>
 		</tr>
-		<c:forEach var="menu" items="${menuList}" varStatus="status">
-			<tr>
-				<td class="center">${menu.foodName}</td>
-				<td class="center">${menu.price}</td>
-				<td class="center">${menu.kcal}</td>
-				<td>${menu.description}</td>
-				<td class="center">
-				<form action="BeansServlet" method="post">
-					<input type="hidden" name="index" value="${status.index}">
-					<input class="btn" type="submit" name="btn" value="変更">
-				</form>
-				</td>
-			</tr>
-		</c:forEach>
+		
+		<!-- ここに記入してください -->
+		
 	</table>
 </body>
 </html>

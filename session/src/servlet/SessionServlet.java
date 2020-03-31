@@ -27,10 +27,10 @@ public class SessionServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		// セッションの取得(なければnullが返ってくる)
-		HttpSession session = request.getSession(false);
+		// ここに処理を記入してください
 		
 		// セッションの破棄
-		if(session != null) session.invalidate();
+		// ここに処理を記入してください
 		
 		// ログイン失敗時、ログアウト時、不正操作時以外の場合
 		if(request.getAttribute("message") == null) request.setAttribute("message", "名前とパスワードを入力してください");
@@ -52,11 +52,10 @@ public class SessionServlet extends HttpServlet {
 		
 		try {
 			// セッションの取得
-			HttpSession session = request.getSession(false);
-			ProfileBean pBean = null;
+			// ここに処理を記入してください
 			
 			// セッションに格納されているオブジェクトを取得
-			if(session != null) pBean = (ProfileBean) session.getAttribute("bean");
+			// ここに処理を記入してください
 		
 			// ログインボタンが押された場合
 			if(button.equals("login")) {
@@ -65,12 +64,11 @@ public class SessionServlet extends HttpServlet {
 				if(request.getParameter("pass").equals("reglecasse")) {
 					
 					// 新規セッションの取得
-					HttpSession newSession = request.getSession(true);
-					pBean = new ProfileBean();
-					pBean.setName(request.getParameter("name"));
+					// ここに処理を記入してください
 					
 					// セッションにオブジェクトを格納
-					newSession.setAttribute("bean", pBean);
+					// ここに処理を記入してください
+					
 					fileName = "myPage";
 					
 				// ログイン失敗時の処理
@@ -96,14 +94,16 @@ public class SessionServlet extends HttpServlet {
 
 				// ask1.jspから飛んできた場合
 				if(askNo.equals("1")) {
-					pBean.setAge(request.getParameter("age"));
-					session.setAttribute("bean", pBean);
+					
+					// ここに処理を記入してください
+					
 					fileName = "ask2";
 					
 				// ask2.jspから飛んできた場合
 				}else if(askNo.equals("2")) {
-					pBean.setGender(request.getParameter("gender"));
-					session.setAttribute("bean", pBean);
+					
+					// ここに処理を記入してください
+					
 					fileName = "myPage";
 				}
 				

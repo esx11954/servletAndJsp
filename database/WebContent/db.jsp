@@ -15,9 +15,8 @@
 	<div class="content">
 	
 		<div class="post">
-			<c:if test="${message != null}">
-				<p class="message">${message}</p>
-			</c:if>
+			
+			<!-- ここに記入してください -->
 		
 			<form action="DBServlet" method="post">
 				<textarea name="text" rows="4" cols="30" class = "textbox-radius" placeholder="いまなにしている？"></textarea>
@@ -25,22 +24,9 @@
 			</form>
 		</div>
 		<br>
-		<c:if test="${list != null}">
-			<c:forEach var="i" items="${list}">
-				<div class="tweet">
-					<div class="icon"><div class="circle"></div></div>
-					
-					<div>
-						<div class="name">Hello World</div>
-						<div class="mention">@hello_world - ${i.date}</div>
-						<div class="content">${i.content}</div>
-						<form action="DBServlet" method="post" class = "control">
-							<input type="submit" name="button" value="" class="button-delete"><input type="hidden" name="id" value="${i.id}">
-						</form>
-					</div>
-				</div>
-			</c:forEach>
-		</c:if>
+		
+		<!-- ここに記入してください -->
+		
 	</div>
 </body>
 </html>

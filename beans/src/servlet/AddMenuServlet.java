@@ -57,14 +57,9 @@ public class AddMenuServlet extends HttpServlet {
 			if(name.isEmpty() || price.isEmpty() || kcal.isEmpty() || desc.isEmpty()) throw new Exception();
 			
 			// 正しく入力されていればsessionのmenuListに追加
-			ArrayList<FoodBean> menuList = (ArrayList<FoodBean>) session.getAttribute("menuList");
-			FoodBean foodBean = new FoodBean();
-			foodBean.setFoodName(name);
-			foodBean.setPrice(Integer.parseInt(price));
-			foodBean.setKcal(Integer.parseInt(kcal));
-			foodBean.setDescription(desc);
-			menuList.add(foodBean);
-			session.setAttribute("menuList", menuList);
+			
+			// ここに処理を記入してください
+			
 		}catch(Exception e) {
 			session.setAttribute("message", "エラーが発生しました");
 			System.out.println(e.getMessage());

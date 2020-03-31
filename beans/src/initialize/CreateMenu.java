@@ -72,17 +72,10 @@ public class CreateMenu {
 	 * @return　beanオブジェクトを要素としてもつArrayList
 	 */
 	public static ArrayList<FoodBean> createMenuList(){
-		ArrayList<FoodBean> menuList = new ArrayList<>();
-		FoodBean bean;
-		for(int i = 0; i < names.length; i++) {
-			bean = new FoodBean();
-			bean.setFoodName(names[i]);
-			bean.setPrice(prices[i]);
-			bean.setKcal(kcals[i]);
-			bean.setDescription(descriptions[i]);
-			menuList.add(bean);
-		}
-		return menuList;
+		
+		// ここに処理を記入してください
+		
+		return null;
 		
 	}
 	

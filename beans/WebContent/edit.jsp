@@ -21,19 +21,14 @@
 			<th class="col5"></th>
 		</tr> 
 		<tr>			
-			<td><input class="edit" type="text" size="10" name="foodName" value="${editItem.foodName}"></td>
-			<td><input class="edit" type="text" size="10" name="price" value="${editItem.price}"></td>		
-			<td><input class="edit" type="text" size="10" name="kcal" value="${editItem.kcal}"></td>		
-			<td><textarea name="description">${editItem.description}</textarea></td>
-			<td><input class="btn" type="submit" name="btn" value="確定"></td>
+			
+			<!-- ここに記入してください -->
+			
 		</tr>
 	</table>
 	</form>
-	<c:if test ="${editOrAdd == '編集'}">
-		<form class="delForm" action="DeleteMenuServlet" method="get">
-			<input class="deletebtn" type="submit" value="削除する">
-			<input type="hidden" name="index" value="${index}">
-		</form>
-	</c:if>
+	
+	<!-- ここに記入してください -->
+	
 </body>
 </html>

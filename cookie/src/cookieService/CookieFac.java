@@ -24,9 +24,9 @@ public class CookieFac {
 		Cookie cookie = null;
 		
 		if(param != null && !param.isEmpty()) {
-			String encoded = URLEncoder.encode(param, "UTF-8");
-			cookie = new Cookie(idOrPass, encoded);
-			cookie.setMaxAge(60);
+			
+			// ここに処理を記入してください
+			
 		}
 		return cookie;
 	}

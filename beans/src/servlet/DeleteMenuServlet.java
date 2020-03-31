@@ -29,11 +29,7 @@ public class DeleteMenuServlet extends HttpServlet {
 		HttpSession session = request.getSession(false);
 		ArrayList<FoodBean> menuList = (ArrayList<FoodBean>) session.getAttribute("menuList");
 		
-		int index = Integer.parseInt(request.getParameter("index"));
-		String delName = menuList.get(index).getFoodName();
-		session.setAttribute("message", delName + " を削除しました");
-		menuList.remove(index);
-		session.setAttribute("menuList", menuList);
+		// ここに処理を記入してください
 		
 		response.sendRedirect("http://localhost:8080/beans/BeansServlet");
 	}
