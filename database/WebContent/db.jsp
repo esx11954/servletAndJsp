@@ -35,7 +35,7 @@
 						<div class="mention">@hello_world - ${i.date}</div>
 						<div class="content">${i.content}</div>
 						<form action="DBServlet" method="post" class = "control">
-							<input type="submit" name="button" value="" class="button-delete"><input type="hidden" name="index" value="${i.id}">
+							<input type="submit" name="button" value="" class="button-delete"><input type="hidden" name="id" value="${i.id}">
 						</form>
 					</div>
 				</div>

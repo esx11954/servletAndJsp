@@ -19,7 +19,6 @@ public class DeleteItem implements DBAccess {
 		int n = 0;
 		
 		int code = Integer.parseInt(request.getParameter("code"));
-		System.out.println(code);
 		
 		try {
 			dao = new ItemDao();

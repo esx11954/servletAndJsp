@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import dao.Dao;
 import dto.MessageDto;
 
+/**
+ * DBAccessインターフェースを実装する検索クラス<br>
+ * 全てのデータをArrayListとして取得する
+ * @author user
+ *
+ */
 public class Select implements DBAccess {
 	
 	@Override

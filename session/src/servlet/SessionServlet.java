@@ -104,7 +104,6 @@ public class SessionServlet extends HttpServlet {
 				}else if(askNo.equals("2")) {
 					pBean.setGender(request.getParameter("gender"));
 					session.setAttribute("bean", pBean);
-					System.out.println(request.getParameter("gender"));
 					fileName = "myPage";
 				}
 				

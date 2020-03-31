@@ -16,7 +16,7 @@ import servise.Insert;
 import servise.Select;
 
 /**
- * Servlet implementation class webServlet
+ * DB学習用サーブレット
  */
 @WebServlet("/DBServlet")
 public class DBServlet extends HttpServlet {
@@ -38,7 +38,7 @@ public class DBServlet extends HttpServlet {
 		}
 		
 		ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/jspTest.jsp");
+		RequestDispatcher dis = context.getRequestDispatcher("/db.jsp");
 		dis.forward(request, response);
 	}
 
