@@ -32,21 +32,7 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doPost(request, response);
-		/*
-		ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/search.jsp");
-		dis.forward(request, response);
-		*/
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String selectWay = request.getParameter("selectWay");
-		System.out.println(selectWay);
 		
 		switch (selectWay){
 		case "name":

@@ -32,7 +32,6 @@ public class ItemDao {
 		String user = "root";
 		String pass = "root";
 		con = DriverManager.getConnection(url, user, pass);
-		System.out.println("Connection success!");
 	}
 	
 	/**
