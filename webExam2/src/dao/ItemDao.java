@@ -54,7 +54,6 @@ public class ItemDao {
 	 */
 	public int getLoginInfo(String name, String pass) throws SQLException{
 		
-		System.out.println(name + pass);
 		sql = "SELECT * from user where name = ? and password = ?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, name);

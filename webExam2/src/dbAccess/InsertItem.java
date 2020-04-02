@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import dao.ItemDao;
 import dto.ItemDto;
+import filter.Judge;
 
 /**
  * DBAccessインターフェースを実装する登録クラス<br>
@@ -23,7 +24,7 @@ public class InsertItem implements DBAccess {
 		String category= request.getParameter("category");
 		String price = request.getParameter("price");
 		
-		if(name != null && !name.isEmpty() && price != null && !price.isEmpty()) {
+		if(name != null && !name.isEmpty() && price != null && !price.isEmpty() && Judge.isNumber(price)) {
 			
 			ItemDto dto = new ItemDto();
 			dto.setName(name);

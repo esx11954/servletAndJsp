@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import dao.ItemDao;
 import dto.ItemDto;
+import filter.Judge;
 
 /**
  * DBAccessインターフェースを実装する更新クラス<br>
@@ -23,7 +24,7 @@ public class UpdateItem implements DBAccess {
 		String category = request.getParameter("category");
 		String price = request.getParameter("price");
 		
-		if(name == null || name.isEmpty() || price == null || price.isEmpty()) {
+		if(name == null || name.isEmpty() || price == null || price.isEmpty() || !Judge.isNumber(price)) {
 			request.setAttribute("message", "入力が不正です");
 			return;
 		}
