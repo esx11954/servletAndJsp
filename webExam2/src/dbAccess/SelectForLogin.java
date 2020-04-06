@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 
-import dao.ItemDao;
 
 /**
  * DBAccessインターフェースを実装する検索クラス<br>
@@ -15,7 +14,7 @@ public class SelectForLogin implements DBAccess {
 	@Override
 	public void execute(HttpServletRequest request) throws SQLException {
 		
-		ItemDao dao = null;
+		// ここに処理を記入してください
 		int n = 0;
 		
 		String name = request.getParameter("name");
@@ -28,16 +27,16 @@ public class SelectForLogin implements DBAccess {
 		}
 		
 		try {
-			dao = new ItemDao();
-			n = dao.getLoginInfo(name, pass);
-			System.out.println("n..." + n);
+			// ここに処理を記入してください
+			// ここに処理を記入してください
+			
 			if(n > 0) {
 				request.setAttribute("flag", true);
 			}else {
 				request.setAttribute("flag", false);
 			}
 		}finally {
-			if(dao != null) dao.close();
+			// ここに処理を記入してください
 		}
 
 	}

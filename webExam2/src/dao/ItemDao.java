@@ -27,13 +27,9 @@ public class ItemDao {
 	 * testdbに接続するためのコンストラクタ
 	 * @throws SQLException
 	 */
-	public ItemDao() throws SQLException{
-		String url= "jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC";
-		String user = "root";
-		String pass = "root";
-		con = DriverManager.getConnection(url, user, pass);
-		System.out.println("Connection success!");
-	}
+	
+	// ここにコンストラクタを記入してください
+	
 	
 	/**
 	 * DB接続を切断する
@@ -53,29 +49,16 @@ public class ItemDao {
 	 * @return ログイン成功時...1 <br>ログイン失敗時...0
 	 * @throws SQLException
 	 */
-	public int getLoginInfo(String name, String pass) throws SQLException{
-		
-		System.out.println(name + pass);
-		sql = "SELECT * from user where name = ? and password = ?";
-		ps = con.prepareStatement(sql);
-		ps.setString(1, name);
-		ps.setString(2, pass);
-		rs = ps.executeQuery();
-		rs.last();
-		return rs.getRow();
-	}
+
+	// ここにgetLoginInfoメソッドを記入してください
 	
 	/**
 	 * DBから全データを抽出する
 	 * @return 全データを保持するリスト
 	 * @throws SQLException
 	 */
-	public ArrayList<ItemDto> getItemsAll() throws SQLException{
-		
-		sql = "select * from item";
-		ps = con.prepareStatement(sql);
-		return search(ps);
-	}
+	
+	// ここにgetItemsAllメソッドを記入してください
 
 	/**
 	 * DBから1レコードを抽出する(商品コードで検索)
@@ -152,27 +135,8 @@ public class ItemDao {
 	 * @return 検索にヒットしたデータを持つリスト
 	 * @throws SQLException
 	 */
-	private ArrayList<ItemDto> search(PreparedStatement ps) throws SQLException {
-	
-		try {
-			rs = ps.executeQuery();
-			list = new ArrayList<>();
-			ItemDto dto;
-			while(rs.next()) {
-				dto = new ItemDto();
-				dto.setId(rs.getInt("id"));
-				dto.setCode(rs.getInt("code"));
-				dto.setName(rs.getString("name"));
-				dto.setCategory(parseCategory(rs.getString("category")));
-				dto.setPrice(rs.getInt("price"));
-				list.add(dto);
-			}
-			rs.close();
-		}finally {
-			ps.close();
-		}
-		return list;
-	}
+
+	// ここにsearchメソッドを記入してください
 	
 	/**
 	 * 画面から受け取ったデータをDBに挿入するメソッド
@@ -180,24 +144,8 @@ public class ItemDao {
 	 * @return 成功件数
 	 * @throws SQLException
 	 */
-	public int insert(ItemDto dto) throws SQLException {
-		sql = "INSERT INTO item (code, name, category, price) VALUES (?, ?, ?, ?)";
-		int n = 0;
-		
-		try {
-			ps = con.prepareStatement(sql);
-			
-			ps.setInt(1, dto.hashCode());
-			ps.setString(2, dto.getName());
-			ps.setString(3, dto.getCategory());
-			ps.setInt(4, dto.getPrice());
-			
-			n = ps.executeUpdate();
-		}finally {
-			ps.close();
-		}
-		return n;
-	}
+
+	// ここにinsertメソッドを記入してください
 	
 	/**
 	 * DBへの更新処理
@@ -205,24 +153,8 @@ public class ItemDao {
 	 * @return 成功件数
 	 * @throws SQLException
 	 */
-	public int update(ItemDto dto) throws SQLException {
-		
-		sql = "UPDATE item set name = ?, category = ?, price = ? where code = ?";
-		int n = 0;
-		
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setString(1, dto.getName());
-			ps.setString(2, dto.getCategory());
-			ps.setInt(3, dto.getPrice());
-			ps.setInt(4, dto.getCode());
-			
-			n = ps.executeUpdate();
-		}finally {
-			ps.close();
-		}
-		return n;
-	}
+	
+	// ここにupdateメソッドを記入してください
 	
 	/**
 	 * DBへの削除処理
@@ -230,21 +162,8 @@ public class ItemDao {
 	 * @return 成功件数
 	 * @throws SQLException
 	 */
-	public int delete(int code) throws SQLException {
-		
-		sql = "DELETE from item where code = ?";
-		int n = 0;
-		
-		try {
-			ps = con.prepareStatement(sql);
-			ps.setInt(1, code);
-			n = ps.executeUpdate();
-		}finally {
-			ps.close();
-		}
-		
-		return n;
-	}
+
+	// ここにdeleteメソッドを記入してください
 	
 	/**
 	 * カテゴリを変換するメソッド

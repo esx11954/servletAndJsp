@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dbAccess.DBAccess;
-import dbAccess.SelectAll;
 import dbAccess.SelectCategory;
 import dbAccess.SelectName;
 import dbAccess.SelectPrice;
@@ -32,19 +31,6 @@ public class SearchServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doPost(request, response);
-		/*
-		ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/search.jsp");
-		dis.forward(request, response);
-		*/
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String selectWay = request.getParameter("selectWay");
 		System.out.println(selectWay);
 		
@@ -58,9 +44,6 @@ public class SearchServlet extends HttpServlet {
 		case "price":
 			dbAccess = new SelectPrice();
 			break;
-		case "all":
-			dbAccess = new SelectAll();
-			break;
 		}
 		try {
 			dbAccess.execute(request);
@@ -70,6 +53,6 @@ public class SearchServlet extends HttpServlet {
 		
 		ServletContext context = getServletContext();
 		RequestDispatcher dis = context.getRequestDispatcher("/manage.jsp");
-		dis.forward(request, response);
+		dis.forward(request, response);		
 	}
 }

@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dbAccess.DBAccess;
-import dbAccess.InsertItem;
 
 /**
  * 商品登録時に呼び出されるサーブレット<br>
@@ -22,7 +20,7 @@ import dbAccess.InsertItem;
 @WebServlet("/InsertServlet")
 public class InsertServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static DBAccess dbAccess;
+	// ここに処理を記入してください
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -38,10 +36,10 @@ public class InsertServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		dbAccess = new InsertItem();
+		// ここに処理を記入してください
 		
 		try {
-			dbAccess.execute(request);
+			// ここに処理を記入してください
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dbAccess.DBAccess;
 import dbAccess.SelectOne;
-import dbAccess.UpdateItem;
 
 /**
  * 商品情報編集時に呼び出されるサーブレット<br>
@@ -47,20 +46,7 @@ public class EditServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getParameter("btn").equals("yes")) {
-			dbAccess = new UpdateItem();
-			try {
-				dbAccess.execute(request);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}else {
-			request.setAttribute("message", "操作をキャンセルしました");
-		}
 		
-		ServletContext context = getServletContext();
-		RequestDispatcher dis = context.getRequestDispatcher("/result.jsp");
-		dis.forward(request, response);
 	}
 
 }
