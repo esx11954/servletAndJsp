@@ -58,8 +58,12 @@ public class ItemDao {
 		ps = con.prepareStatement(sql);
 		ps.setString(1, name);
 		ps.setString(2, pass);
-		rs = ps.executeQuery();
-		rs.last();
+		try {
+			rs = ps.executeQuery();
+			rs.last();
+		}finally {
+			ps.close();
+		}
 		return rs.getRow();
 	}
 	
@@ -165,7 +169,6 @@ public class ItemDao {
 				dto.setPrice(rs.getInt("price"));
 				list.add(dto);
 			}
-			rs.close();
 		}finally {
 			ps.close();
 		}
