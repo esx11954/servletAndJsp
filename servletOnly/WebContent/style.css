@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+body{
+	background-image: url("background.jpg");
+	text-align: center;
+	color: #ffffff;
+	font-size: 20px;
+    font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+}
+
+input{
+	display: inline-block;
+	padding: 0.3em 1em;
+	text-decoration: none;
+	color: #00ced1;
+	border: solid 2px #00ced1;
+	border-radius: 3px;
+	transition: .2s;
+	margin-bottom: 10px;
+}
+
+input:hover {
+  background: #00ced1;
+  color: white;
+}
+
