@@ -28,7 +28,7 @@ public class ItemDao {
 	 * @throws SQLException
 	 */
 	public ItemDao() throws SQLException{
-		String url= "jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC";
+		String url= "jdbc:mysql://localhost:3306/javaexam?serverTimezone=UTC";
 		String user = "root";
 		String pass = "root";
 		con = DriverManager.getConnection(url, user, pass);
@@ -54,17 +54,20 @@ public class ItemDao {
 	 */
 	public int getLoginInfo(String name, String pass) throws SQLException{
 		
+		int row = 0;
 		sql = "SELECT * from user where name = ? and password = ?";
 		ps = con.prepareStatement(sql);
 		ps.setString(1, name);
 		ps.setString(2, pass);
+		
 		try {
 			rs = ps.executeQuery();
 			rs.last();
+			row = rs.getRow();
 		}finally {
 			ps.close();
 		}
-		return rs.getRow();
+		return row;
 	}
 	
 	/**

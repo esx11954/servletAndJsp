@@ -22,7 +22,7 @@ public class Dao {
 	 * @throws SQLException
 	 */
 	public Dao() throws SQLException{
-		String url= "jdbc:mysql://localhost:3306/testdb?serverTimezone=UTC";
+		String url= "jdbc:mysql://localhost:3306/javaweb?serverTimezone=UTC";
 		String user = "root";
 		String pass = "root";
 		con = DriverManager.getConnection(url, user, pass);
